@@ -10,9 +10,11 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
+  font-family: $fontFamily;
   margin: 0;
   padding: 0;
   min-height: 100vh;

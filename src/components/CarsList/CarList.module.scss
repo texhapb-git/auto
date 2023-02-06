@@ -17,6 +17,10 @@
 	&.list {
 		flex-direction: column;
 		gap: 15px;
+
+		@media(max-width: $xs) {
+			gap: 25px;
+		}
 	}
 
 }

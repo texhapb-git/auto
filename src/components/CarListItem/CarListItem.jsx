@@ -40,7 +40,11 @@ const CarListItem = ({ type }) => {
 
 					<div className={styles.carItemListMobileInfo}>
 						<div className={styles.carItemListMobileLink}>
-							<Link to={'/cars/222'} target="_blank">BMW 3 серия, 6 поколение (F3x) [рестайлинг]</Link>
+							<Link to={'/cars/222'} target="_blank">BMW 3 серия, 6 поколение (F3x) [рестайлинг], 2016</Link>
+						</div>
+
+						<div className={styles.carItemListPrice}>
+							<span>{formatPrice(price)}</span>
 						</div>
 
 					</div>
@@ -58,7 +62,7 @@ const CarListItem = ({ type }) => {
 
 						<div className={styles.carItemListDesktopInfo}>
 							<div className={styles.carItemListTitle}>
-								<Link to={'/cars/222'} target="_blank">BMW 3 серия, 6 поколение (F3x) [рестайлинг]</Link>
+								<Link to={'/cars/222'} target="_blank">BMW 3 серия, 6 поколение (F3x) [рестайлинг]<span>, 2016</span></Link>
 							</div>
 						</div>
 
@@ -76,7 +80,7 @@ const CarListItem = ({ type }) => {
 							<div className={styles.carItemListSummaryBlock}>
 								<div>Передний</div>
 								<div>Синий</div>
-
+								<div className={styles.carItemListSummaryMileage}>102&nbsp;000&nbsp;км</div>
 							</div>
 
 						</div>
@@ -87,7 +91,7 @@ const CarListItem = ({ type }) => {
 
 					</div>
 
-					<div className={styles.carItemListPrice}>
+					<div className={`${styles.carItemListPrice} ${styles.hideXS}`}>
 						<span>{formatPrice(price)}</span>
 					</div>
 

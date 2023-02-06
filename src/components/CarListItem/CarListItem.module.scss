@@ -82,27 +82,36 @@
 	border-bottom: 1px solid #E9EAEA;
 	padding-bottom: 15px;
 
-	&::before {
-		display: none;
-		content: '';
-		position: absolute;
-		top: -16px;
-		left: -15px;
-		right: -15px;
-		bottom: 0;
-		background: #fff;
-		box-shadow: 0 5px 20px 0 #0000001a;
-		border-radius: 1rem;
-		z-index: 1;
+	@media(max-width: $xs) {
+		padding-bottom: 25px;
 	}
 
-	&:hover {
-		border-bottom-color: transparent;
-
+	@media(min-width: $xl) {
 		&::before {
-			display: block;
+			display: none;
+			content: '';
+			position: absolute;
+			top: -16px;
+			left: -15px;
+			right: -15px;
+			bottom: 0;
+			background: #fff;
+			box-shadow: 0 5px 20px 0 #0000001a;
+			border-radius: 1rem;
+			z-index: 1;
+		}
+
+		&:hover {
+			border-bottom-color: transparent;
+
+			&::before {
+				display: block;
+			}
 		}
 	}
+
+
+
 }
 
 .carItemList {
@@ -134,11 +143,26 @@
 		}
 	}
 
-	.carItemListMobileLink {}
+	.carItemListMobileLink {
+		margin-bottom: 13px;
+
+		a {
+			color: $textColor;
+			font-weight: 600;
+			font-size: 1.2rem;
+			line-height: 1.2;
+		}
+	}
 
 	.carItemListThumb {
 		width: 210px;
 		flex: 0 0 210px;
+
+
+		@media(max-width: $xs) {
+			width: 100%;
+			flex: 100%;
+		}
 
 		.carItemListImg {
 
@@ -166,6 +190,11 @@
 		width: 300px;
 		flex: 0 0 300px;
 
+		@media(max-width: $xs) {
+			width: 100%;
+			flex: 100%;
+		}
+
 		.carItemListTitle {
 			margin-bottom: 10px;
 
@@ -177,6 +206,14 @@
 
 				&:hover {
 					color: $mainColor;
+				}
+
+				span {
+					display: none;
+
+					@media(max-width: $md) {
+						display: inline;
+					}
 				}
 			}
 		}
@@ -190,10 +227,23 @@
 				flex-direction: column;
 				gap: 1px;
 
+				@media(max-width: $xs) {
+					width: 48%;
+					flex: 0 0 48%;
+				}
+
 				div {
 					color: #00000080;
 					font-size: 0.8rem;
 					line-height: 1.2;
+
+					&.carItemListSummaryMileage {
+						display: none;
+
+						@media(max-width: $md) {
+							display: block;
+						}
+					}
 				}
 			}
 		}
@@ -219,6 +269,15 @@
 		flex: 0 0 130px;
 		padding-top: 5px;
 
+		@media(max-width: $xs) {
+			width: 100%;
+			flex: 100%;
+
+			&.hideXS {
+				display: none;
+			}
+		}
+
 		span {
 			background-color: $mainColor;
 			color: #fff;
@@ -234,9 +293,17 @@
 		width: 40px;
 		flex: 0 0 40px;
 		padding-top: 5px;
+
+		@media(max-width: $md) {
+			display: none;
+		}
 	}
 
 	.carItemListMileage {
 		padding-top: 5px;
+
+		@media(max-width: $md) {
+			display: none;
+		}
 	}
 }

@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types';
 
-import styles from './Container.module.scss';
+import styles from './WorkArea.module.scss';
 
-const Container = ({ children }) => {
+const WorkArea = ({ children }) => {
 	return (
-		<div className={styles.container}>
+		<div className={styles.workarea}>
 			{children}
 		</div>
 	);
 };
 
-Container.propTypes = {
+WorkArea.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node
 	])
 };
 
-export { Container };
+export { WorkArea };

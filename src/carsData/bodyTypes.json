@@ -1,0 +1,52 @@
+[
+	{
+		"id": "BODY_SEDAN",
+		"title": "Седан",
+		"sort": 100
+	},
+	{
+		"id": "BODY_HATCHBACK",
+		"title": "Хэтчбек",
+		"sort": 200
+	},
+	{
+		"id": "BODY_OFFROAD",
+		"title": "Внедорожник",
+		"sort": 300
+	},
+	{
+		"id": "BODY_UNIVERSAL",
+		"title": "Универсал",
+		"sort": 400
+	},
+	{
+		"id": "BODY_LIFTBACK",
+		"title": "Лифтбек",
+		"sort": 500
+	},
+	{
+		"id": "BODY_MINIVAN",
+		"title": "Минивэн",
+		"sort": 600
+	},
+	{
+		"id": "BODY_COUPE",
+		"title": "Купе",
+		"sort": 700
+	},
+	{
+		"id": "BODY_VAN",
+		"title": "Фургон",
+		"sort": 800
+	},
+	{
+		"id": "BODY_PICKUP",
+		"title": "Пикап",
+		"sort": 900
+	},
+	{
+		"id": "BODY_CABRIOLET",
+		"title": "Кабриолет",
+		"sort": 1000
+	}
+]

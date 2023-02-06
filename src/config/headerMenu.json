@@ -1,0 +1,12 @@
+[
+	{
+		"id": "header-link-1",
+		"title": "О проекте",
+		"path": "/about"
+	},
+	{
+		"id": "header-link-2",
+		"title": "Объявления",
+		"path": "/cars"
+	}
+]

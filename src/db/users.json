@@ -1,0 +1,18 @@
+[
+	{
+		"_id": "Hyewrn23Tv",
+		"firstName": "Александр",
+		"lastName": "Полулопатин",
+		"avatar": "",
+		"email": "test1@test.com",
+		"password": "123qqq"
+	},
+	{
+		"_id": "jnfdYF23kdn",
+		"firstName": "Максимиллиан",
+		"lastName": "Аватаров",
+		"avatar": "",
+		"email": "test2@test.com",
+		"password": "123qqq"
+	}
+]

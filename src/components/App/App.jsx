@@ -1,9 +1,19 @@
+import { useRoutes } from 'react-router-dom';
+
+import routes from '../../routes/routes';
+
 import '../../styles/main.scss';
 
-function App() {
+
+const App = () => {
+
+	const appRoutes = useRoutes(routes);
+
 	return (
-		<></>
+		<>
+			{appRoutes}
+		</>
 	);
-}
+};
 
 export { App };

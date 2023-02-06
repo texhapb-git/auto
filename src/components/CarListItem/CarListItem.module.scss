@@ -74,5 +74,169 @@
 		}
 	}
 
+}
 
+.carItemListContainer {
+	position: relative;
+	z-index: 1;
+	border-bottom: 1px solid #E9EAEA;
+	padding-bottom: 15px;
+
+	&::before {
+		display: none;
+		content: '';
+		position: absolute;
+		top: -16px;
+		left: -15px;
+		right: -15px;
+		bottom: 0;
+		background: #fff;
+		box-shadow: 0 5px 20px 0 #0000001a;
+		border-radius: 1rem;
+		z-index: 1;
+	}
+
+	&:hover {
+		border-bottom-color: transparent;
+
+		&::before {
+			display: block;
+		}
+	}
+}
+
+.carItemList {
+	display: flex;
+	gap: 30px;
+	position: relative;
+	z-index: 2;
+
+	@media(max-width: $xs) {
+		width: 100%;
+		flex-direction: column;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.carItemListDesktopInfo {
+		display: block;
+
+		@media(max-width: $xs) {
+			display: none;
+		}
+	}
+
+	.carItemListMobileInfo {
+		display: none;
+
+		@media(max-width: $xs) {
+			display: block;
+		}
+	}
+
+	.carItemListMobileLink {}
+
+	.carItemListThumb {
+		width: 210px;
+		flex: 0 0 210px;
+
+		.carItemListImg {
+
+			aspect-ratio: 400/250;
+			border-radius: 8px;
+			overflow: hidden;
+			background-color: #f8f8f8;
+
+			a {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				border-radius: 5px;
+			}
+		}
+	}
+
+	.carItemListContent {
+		width: 300px;
+		flex: 0 0 300px;
+
+		.carItemListTitle {
+			margin-bottom: 10px;
+
+			a {
+				color: $textColor;
+				font-size: 1rem;
+				line-height: 1.3;
+				font-weight: 600;
+
+				&:hover {
+					color: $mainColor;
+				}
+			}
+		}
+
+		.carItemListSummary {
+			display: flex;
+			gap: 15px;
+
+			.carItemListSummaryBlock {
+				display: flex;
+				flex-direction: column;
+				gap: 1px;
+
+				div {
+					color: #00000080;
+					font-size: 0.8rem;
+					line-height: 1.2;
+				}
+			}
+		}
+
+		.carItemListCity {
+			margin-top: 13px;
+
+			span {
+				position: relative;
+				background: #F0F0FE;
+				border-radius: 5px;
+				font-size: 0.8rem;
+				line-height: 1;
+				color: $textColor;
+				padding: 2px 12px 4px;
+			}
+
+		}
+	}
+
+	.carItemListPrice {
+		width: 130px;
+		flex: 0 0 130px;
+		padding-top: 5px;
+
+		span {
+			background-color: $mainColor;
+			color: #fff;
+			font-weight: 600;
+			font-size: 1rem;
+			line-height: 1;
+			padding: 5px 10px;
+			border-radius: 5px;
+		}
+	}
+
+	.carItemListYear {
+		width: 40px;
+		flex: 0 0 40px;
+		padding-top: 5px;
+	}
+
+	.carItemListMileage {
+		padding-top: 5px;
+	}
 }

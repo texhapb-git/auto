@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { Navbar } from '../Navbar';
 
-import { getIsOpen } from '../../store/mobileMenuSlice';
+import { getIsOpen } from '../../store/slices/mobileMenuSlice';
 
 import mobileLinks from '../../config/mobileMenu.json';
 
@@ -13,7 +13,7 @@ const MobileMenu = () => {
 	const isOpen = useSelector(getIsOpen);
 
 	return (
-		<div className={styles.mobileMenuContainer + ' ' + `${isOpen ? styles.mobileMenuContainerActive : ''}`}>
+		<div className={`${styles.mobileMenuContainer} ${isOpen ? styles.mobileMenuContainerActive : ''}`}>
 			<Navbar items={mobileLinks} className="mobileMenu" />
 		</div>
 	);

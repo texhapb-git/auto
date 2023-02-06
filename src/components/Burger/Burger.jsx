@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '../Button';
 
-import { getIsOpen, toggleOpen } from '../../store/mobileMenuSlice';
+import { getIsOpen, toggleOpen } from '../../store/slices/mobileMenuSlice';
 
 import styles from './Burger.module.scss';
 

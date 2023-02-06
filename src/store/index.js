@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import mobileMenuReducer from '../store/mobileMenuSlice';
+import mobileMenuReducer from './slices/mobileMenuSlice';
+import carsReducer from './slices/carsSlice';
 
 export default configureStore({
 	reducer: {
-		mobileMenu: mobileMenuReducer
+		mobileMenu: mobileMenuReducer,
+		cars: carsReducer
 	}
 });

@@ -4,12 +4,16 @@ $fontSize: 16;
 
 $minWidthContainer: 320px;
 $maxWidthContainer: 960px;
-$paddingContainer: 0 15px;
+$paddingContainer: 0 0.75rem;
 $lg: 992px;
 $md: 768px;
 $xs: 576px;
 
+$textColor: #333;
+$footerColor: #333;
 $mainColor: #8e63d2;
-$hoverMainColor: #5a3295;
+$hoverMainColor: #42246f;
+$secondaryColor: #ccc;
+$hoverSecondaryColor: #d5d5d5;
 $errorColor: #dc3545;
-$borderRadius: 12px;
+$borderRadius: 0.75rem;

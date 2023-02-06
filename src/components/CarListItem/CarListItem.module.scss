@@ -1,0 +1,78 @@
+@import '../../styles/varialbles';
+
+.carItemFlat {
+	width: 30%;
+	position: relative;
+
+	@media(max-width: $xs) {
+		width: 100%;
+	}
+
+	.carItemFlatLink {
+		display: block;
+		text-decoration: none;
+		transition: opacity .3s ease-in-out;
+
+		@media (min-width: $lg) {
+			&:hover {
+				opacity: .8;
+			}
+		}
+	}
+
+	.carItemFlatImg {
+
+		aspect-ratio: 400/250;
+		border-radius: 5px;
+		background: #f8f8f8;
+		overflow: hidden;
+		margin-bottom: 10px;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 5px;
+		}
+	}
+
+	.carItemFlatContent {
+
+		.carItemFlatCity {
+			padding: 12px;
+			background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+			border-radius: 5px 5px 0 0;
+			display: inline-block;
+			font-weight: normal;
+			font-size: 0.8rem;
+			line-height: 1;
+			text-shadow: 0 0 5px rgb(0 0 0 / 80%);
+			color: #fff;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+		}
+
+		.carItemFlatTitle {
+			font-weight: normal;
+			font-size: 1rem;
+			line-height: 1;
+			color: $textColor;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			margin-bottom: 5px;
+		}
+
+		.carItemFlatPrice {
+			font-weight: 700;
+			font-size: 1rem;
+			line-height: 1;
+			color: #2B2D33;
+			white-space: nowrap;
+		}
+	}
+
+
+}

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
 
 import { Header } from '../components/Header';
 import { Main } from '../components/Main';
@@ -6,14 +6,14 @@ import { Footer } from '../components/Footer';
 import { Container } from '../components/Container';
 import { WorkArea } from '../components/WorkArea';
 
-const InnerLayout = ({ children }) => {
+const InnerLayout = () => {
 	return (
 		<>
 			<Header />
 			<Main>
 				<WorkArea>
 					<Container>
-						{children}
+						<Outlet />
 					</Container>
 				</WorkArea>
 			</Main>
@@ -21,13 +21,6 @@ const InnerLayout = ({ children }) => {
 
 		</>
 	);
-};
-
-InnerLayout.propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.arrayOf(PropTypes.node),
-		PropTypes.node
-	])
 };
 
 export { InnerLayout };

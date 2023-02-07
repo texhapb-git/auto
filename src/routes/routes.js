@@ -1,23 +1,38 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { MainPage } from '../pages/MainPage';
 import { CarsPage } from '../pages/CarsPage';
 import { AboutPage } from '../pages/AboutPage';
-
+import { FavouritesPage } from '../pages/FavouritesPage';
+import { CarDetailPage } from '../pages/CarDetailPage';
+import { MainLayout } from '../layouts/MainLayout';
+import { InnerLayout } from '../layouts/InnerLayout';
 
 
 const routes = [
 	{
 		path: '',
-		element: <MainPage />
+		element: <MainLayout />,
+		children: [
+			{
+				index: true,
+				element: <MainPage />
+			}
+		]
 	},
 	{
 		path: 'about',
-		element: <AboutPage />
+		element: <InnerLayout />,
+		children: [
+			{
+				index: true,
+				element: <AboutPage />
+			}
+		]
 	},
 	{
 		path: 'cars',
-		element: <CarsPage />,
+		element: <InnerLayout />,
 		children: [
 			{
 				index: true,
@@ -25,7 +40,17 @@ const routes = [
 			},
 			{
 				path: ':carId',
-				element: <Outlet />,
+				element: <CarDetailPage />,
+			}
+		]
+	},
+	{
+		path: 'favourites',
+		element: <InnerLayout />,
+		children: [
+			{
+				index: true,
+				element: <FavouritesPage />
 			}
 		]
 	},

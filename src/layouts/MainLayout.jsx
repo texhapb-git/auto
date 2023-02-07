@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
 
 import { Header } from '../components/Header';
 import { Main } from '../components/Main';
@@ -7,14 +7,15 @@ import { Container } from '../components/Container';
 import { WorkArea } from '../components/WorkArea';
 import { MobileMenu } from '../components/MobileMenu';
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
 	return (
 		<>
 			<Header />
 			<Main>
 				<WorkArea>
 					<Container>
-						{children}
+
+						<Outlet />
 					</Container>
 				</WorkArea>
 			</Main>
@@ -22,13 +23,6 @@ const MainLayout = ({ children }) => {
 			<MobileMenu />
 		</>
 	);
-};
-
-MainLayout.propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.arrayOf(PropTypes.node),
-		PropTypes.node
-	])
 };
 
 export { MainLayout };

@@ -1,8 +1,14 @@
 import { CarsList } from '../components/CarsList';
 
+import cars from '../db/cars.json';
+
 const CarsPage = () => {
 	return (
-		<CarsList type="list" />
+		<>
+			<h1>Filter</h1>
+			<CarsList type="list" cars={cars} />
+		</>
+
 	);
 };
 

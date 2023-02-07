@@ -1,10 +1,6 @@
-import { InnerLayout } from '../layouts/InnerLayout';
-
 const AboutPage = () => {
 	return (
-		<InnerLayout>
-			AboutPage
-		</InnerLayout>
+		<div>AboutPage</div>
 	);
 };
 

@@ -1,3 +1,4 @@
+
 import PropTypes from 'prop-types';
 
 import { CarsListItem } from '../CarsListItem';
@@ -5,6 +6,7 @@ import { CarsListItem } from '../CarsListItem';
 import styles from './CarsList.module.scss';
 
 const CarsList = ({ type, title, cars }) => {
+
 	return (
 
 		<div className={styles.carListContainer}>

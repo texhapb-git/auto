@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-import { CarListItem } from '../CarListItem';
+import { CarsListItem } from '../CarsListItem';
 
-import styles from './CarList.module.scss';
+import styles from './CarsList.module.scss';
 
-const CarsList = ({ type, title }) => {
+const CarsList = ({ type, title, cars }) => {
 	return (
 
 		<div className={styles.carListContainer}>
@@ -14,17 +14,18 @@ const CarsList = ({ type, title }) => {
 				: null
 			}
 
-			<div className={styles.carList + ' ' + styles[type]}>
-				<CarListItem type={type} />
-				<CarListItem type={type} />
-				<CarListItem type={type} />
-				<CarListItem type={type} />
-				<CarListItem type={type} />
-				<CarListItem type={type} />
-			</div>
+			{cars.length ?
+				<div className={styles.carList + ' ' + styles[type]}>
+					{cars.map(car => {
+						if (!car._id) {
+							return null;
+						}
 
-
-
+						return <CarsListItem key={car._id} type={type} car={car} />;
+					})}
+				</div>
+				: null
+			}
 
 		</div>
 	);
@@ -32,11 +33,14 @@ const CarsList = ({ type, title }) => {
 
 CarsList.defaultProps = {
 	type: 'list',
-	title: ''
+	title: '',
+	cars: []
 };
 
 CarsList.propTypes = {
-	type: PropTypes.oneOf(['list', 'flat'])
+	type: PropTypes.oneOf(['list', 'flat']),
+	title: PropTypes.string,
+	cars: PropTypes.arrayOf(PropTypes.object)
 };
 
 export { CarsList };

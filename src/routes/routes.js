@@ -1,12 +1,16 @@
 import { Navigate } from 'react-router-dom';
 
+import { MainLayout } from '../layouts/MainLayout';
+import { InnerLayout } from '../layouts/InnerLayout';
+import { AuthLayout } from '../layouts/AuthLayout';
+
 import { MainPage } from '../pages/MainPage';
 import { CarsPage } from '../pages/CarsPage';
 import { AboutPage } from '../pages/AboutPage';
 import { FavouritesPage } from '../pages/FavouritesPage';
 import { CarDetailPage } from '../pages/CarDetailPage';
-import { MainLayout } from '../layouts/MainLayout';
-import { InnerLayout } from '../layouts/InnerLayout';
+import { LoginPage } from '../pages/LoginPage';
+import { SignupPage } from '../pages/SignupPage';
 
 
 const routes = [
@@ -51,6 +55,28 @@ const routes = [
 			{
 				index: true,
 				element: <FavouritesPage />
+			}
+		]
+	},
+	{
+		path: 'auth',
+		element: <AuthLayout />,
+		children: [
+			{
+				index: true,
+				element: <Navigate to="/auth/login" />
+			},
+			{
+				path: 'login',
+				element: <LoginPage />
+			},
+			{
+				path: 'signup',
+				element: <SignupPage />
+			},
+			{
+				path: '*',
+				element: <Navigate to="/auth/login" />
 			}
 		]
 	},

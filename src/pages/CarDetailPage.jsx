@@ -1,37 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { CarDetail } from '../components/CarDetail';
 import { Spinner } from '../components/Spinner';
 
-import cars from '../db/cars.json';
+import { fetchCar, getCarDetail, getCarDetailLoading, getCarDetailError } from '../store/slices/carDetailSlice';
+
+// import cars from '../db/cars.json';
 
 const CarDetailPage = () => {
-	const [loading, setLoading] = useState(true);
+	const dispatch = useDispatch();
+
 	const { carId } = useParams();
-	const car = cars.find(car => car._id === carId);
+
+	const loading = useSelector(getCarDetailLoading);
+	const error = useSelector(getCarDetailError);
+	const car = useSelector(getCarDetail);
 
 	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setLoading(false);
-		}, 1500);
+		dispatch(fetchCar(carId));
+	}, [carId, dispatch]);
 
-		return () => clearTimeout(timeout);
-	}, []);
-
-
-	if (loading) {
-		return (<Spinner />);
-	}
-
-	if (!car) {
-		return (
-			<h1>Объявление не найдено</h1>
-		);
+	if (error) {
+		toast(error, { type: 'error' });
 	}
 
 	return (
-		<CarDetail car={car} />
+		<>
+			{!error ?
+				<>
+					{loading ?
+						<Spinner />
+						: <CarDetail car={car} />
+					}
+				</>
+				: null
+			}
+		</>
 	);
 };
 

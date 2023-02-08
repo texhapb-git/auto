@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Navbar.module.scss';
 
-const Navbar = ({ items, className }) => {
+const Navbar = ({ items, className, onClick }) => {
 
 	return (
 		<>
@@ -14,7 +14,7 @@ const Navbar = ({ items, className }) => {
 							<ul>
 								{items.map(link => (
 									<li key={link.id}>
-										<NavLink className={({ isActive }) =>
+										<NavLink onClick={onClick} className={({ isActive }) =>
 											isActive ? styles.active : ''
 										} to={link.path}>{link.title}</NavLink>
 									</li>
@@ -31,7 +31,8 @@ const Navbar = ({ items, className }) => {
 
 Navbar.propTypes = {
 	items: PropTypes.arrayOf(PropTypes.object).isRequired,
-	className: PropTypes.string
+	className: PropTypes.string,
+	onClick: PropTypes.func
 };
 
 export { Navbar };

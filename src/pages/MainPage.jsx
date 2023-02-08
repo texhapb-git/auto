@@ -1,30 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { CarsList } from '../components/CarsList';
 import { Spinner } from '../components/Spinner';
+import { fetchLastCars, getLastCars, getLastCarsLoading, getLastCarsError } from '../store/slices/lastCarsSlice';
 
-import cars from '../db/cars.json';
-cars = cars.sort((a, b) => b.dateCreate - a.dateCreate).slice(0, 6);
 
 const MainPage = () => {
-	const [loading, setLoading] = useState(true);
+	const dispatch = useDispatch();
+
+	const loading = useSelector(getLastCarsLoading);
+	const error = useSelector(getLastCarsError);
+	const cars = useSelector(getLastCars);
 
 	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setLoading(false);
-		}, 1500);
-
-		return () => clearTimeout(timeout);
-	}, [setLoading]);
+		dispatch(fetchLastCars());
+	}, [dispatch]);
 
 	return (
 		<>
 			<h1>Объявления о продаже авто</h1>
 			<p>Тут нужен вдохновляющий текст про сервис</p>
 
-			{loading ?
-				<Spinner />
-				: <CarsList type="flat" title="Последние объявления" cars={cars} />
+			{!error ?
+				<>
+					{loading ?
+						<Spinner />
+						: <CarsList type="flat" title="Последние объявления" cars={cars} />
+					}
+				</>
+				: null
 			}
 		</>
 	);

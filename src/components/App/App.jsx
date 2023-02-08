@@ -1,7 +1,10 @@
 import { useRoutes } from 'react-router-dom';
 
+import { ToastContainer } from 'react-toastify';
+
 import routes from '../../routes/routes';
 
+import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/main.scss';
 
 
@@ -12,6 +15,8 @@ const App = () => {
 	return (
 		<>
 			{appRoutes}
+
+			<ToastContainer />
 		</>
 	);
 };

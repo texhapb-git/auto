@@ -5,6 +5,7 @@ import { Main } from '../components/Main';
 import { Footer } from '../components/Footer';
 import { Container } from '../components/Container';
 import { WorkArea } from '../components/WorkArea';
+import { MobileMenu } from '../components/MobileMenu';
 
 const InnerLayout = () => {
 	return (
@@ -18,6 +19,7 @@ const InnerLayout = () => {
 				</WorkArea>
 			</Main>
 			<Footer />
+			<MobileMenu />
 		</>
 	);
 };

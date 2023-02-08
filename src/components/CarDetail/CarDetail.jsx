@@ -7,15 +7,13 @@ import { Button } from '../Button';
 import { formatPrice, formatNumber } from '../../utils/numbers';
 import { formatPhone } from '../../utils/phone';
 
-import users from '../../db/users.json';
-
 import { Avatar } from '../Avatar';
 
 import styles from './CarDetail.module.scss';
 
 
 const CarDetail = ({ car }) => {
-	const owner = users.find(user => user._id === car.userId);
+	const owner = car.userInfo;
 
 	const images = [
 		{

@@ -8,17 +8,17 @@ const usersService = {
 		return response;
 	},
 	getUserById: async (userId) => {
-		const { data } = await httpService.get(
+		const response = await httpService.get(
 			usersEndPoint + userId
 		);
-		return data;
+		return response;
 	},
 	createUser: async (userId, payload) => {
-		const { data } = httpService.put(
+		const response = httpService.put(
 			usersEndPoint + userId,
 			payload
 		);
-		return data;
+		return response;
 	}
 };
 

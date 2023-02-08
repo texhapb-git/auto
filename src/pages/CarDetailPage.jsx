@@ -5,7 +5,6 @@ import { CarDetail } from '../components/CarDetail';
 import { Spinner } from '../components/Spinner';
 
 import cars from '../db/cars.json';
-import users from '../db/users.json';
 
 const CarDetailPage = () => {
 	const [loading, setLoading] = useState(true);

@@ -13,8 +13,8 @@ import { Avatar } from '../Avatar';
 
 import styles from './CarDetail.module.scss';
 
-const CarDetail = ({ car }) => {
 
+const CarDetail = ({ car }) => {
 	const owner = users.find(user => user._id === car.userId);
 
 	const images = [

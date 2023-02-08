@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { SvgIcon } from '../SvgIcon';
 
+import { getFavouritesCount } from '../../store/slices/favouritesSlice';
+
 import styles from './FavouriteBlock.module.scss';
+
 
 const FavouriteBlock = () => {
 
-	const [count, setCount] = useState(22);
+	const count = useSelector(getFavouritesCount);
 
 	return (
 		<div className={styles.fav}>

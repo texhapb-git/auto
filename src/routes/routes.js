@@ -5,10 +5,11 @@ import { InnerLayout } from '../layouts/InnerLayout';
 import { AuthLayout } from '../layouts/AuthLayout';
 
 import { MainPage } from '../pages/MainPage';
-import { CarsPage } from '../pages/CarsPage';
 import { AboutPage } from '../pages/AboutPage';
-import { FavouritesPage } from '../pages/FavouritesPage';
+import { CarsListPage } from '../pages/CarsListPage';
 import { CarDetailPage } from '../pages/CarDetailPage';
+import { FavouritesPage } from '../pages/FavouritesPage';
+
 import { LoginPage } from '../pages/LoginPage';
 import { SignupPage } from '../pages/SignupPage';
 
@@ -40,7 +41,7 @@ const routes = [
 		children: [
 			{
 				index: true,
-				element: <CarsPage />
+				element: <CarsListPage />
 			},
 			{
 				path: ':carId',

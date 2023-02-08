@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types';
 
 import { CarsListItem } from '../CarsListItem';
@@ -19,11 +18,11 @@ const CarsList = ({ type, title, cars }) => {
 			{cars.length ?
 				<div className={styles.carList + ' ' + styles[type]}>
 					{cars.map(car => {
-						if (!car._id) {
+						if (!car.id) {
 							return null;
 						}
 
-						return <CarsListItem key={car._id} type={type} car={car} />;
+						return <CarsListItem key={`car-${car.id}`} type={type} car={car} />;
 					})}
 				</div>
 				: null

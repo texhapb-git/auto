@@ -1,7 +1,7 @@
 import { Container } from '../Container';
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
-import { FavouriteBlock } from '../FavouriteBlock';
+// import { FavouriteBlock } from '../FavouriteBlock';
 import { Profile } from '../Profile';
 import { Burger } from '../Burger';
 
@@ -30,9 +30,9 @@ const Header = () => {
 						</div>
 
 						<div className={styles.headerRight}>
-							<div className={styles.headerFavourite}>
+							{/* <div className={styles.headerFavourite}>
 								<FavouriteBlock />
-							</div>
+							</div> */}
 							<div className={styles.headerProfile}>
 								<Profile />
 							</div>

@@ -6,7 +6,7 @@ const NAME_SPACE = 'favourites';
 const favouritesSlice = createSlice({
 	name: NAME_SPACE,
 	initialState: {
-		favs: [1, 2],
+		favs: [],
 	},
 	reducers: {
 		toggleFavourite(state, action) {

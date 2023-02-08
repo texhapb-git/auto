@@ -1,23 +1,26 @@
 import PropTypes from 'prop-types';
 
+import defaultAvatar from '../../assets/images/default-avatar.jpg';
+
 import styles from './Avatar.module.scss';
 
 const Avatar = ({ src, alt, size, className, ...rest }) => {
+
+	if (!src.length) {
+		src = defaultAvatar;
+	}
+
 	return (
 		<>
-			{
-				src?.length ?
-					<img
-						loading="lazy"
-						src={src}
-						alt={alt}
-						className={styles.avatar + ' ' + className}
-						style={{ width: `${size}px` }}
-						{...rest}
-					/>
+			<img
+				loading="lazy"
+				src={src}
+				alt={alt}
+				className={styles.avatar + ' ' + className}
+				style={{ width: `${size}px` }}
+				{...rest}
+			/>
 
-					: null
-			}
 		</>
 	);
 };

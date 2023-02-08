@@ -18,11 +18,27 @@
 	}
 }
 
-.profileAvatar {
-	max-width: 42px;
-	max-height: 42px;
-	height: auto;
+.profileAvatarBlock {
+	width: 42px;
+	height: 42px;
+	overflow: hidden;
 	border-radius: 50%;
+	aspect-ratio: 1/1;
+	background-color: #f8f8f8;
+
+	a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.profileAvatar {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+
 }
 
 .profileLogout {

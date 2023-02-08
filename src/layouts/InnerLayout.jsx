@@ -18,7 +18,6 @@ const InnerLayout = () => {
 				</WorkArea>
 			</Main>
 			<Footer />
-
 		</>
 	);
 };

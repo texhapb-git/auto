@@ -18,9 +18,11 @@ const Profile = () => {
 					<div className={styles.profileName}>
 						<Link to="/personal">Александр</Link>
 					</div>
-					<Link to="/personal">
-						<Avatar src={process.env.PUBLIC_URL + '/assets/images/person.jpg'} className={styles.profileAvatar} />
-					</Link>
+					<div className={styles.profileAvatarBlock}>
+						<Link to="/personal">
+							<Avatar src="" className={styles.profileAvatar} />
+						</Link>
+					</div>
 					<Button type="none" className={styles.profileLogout} onClick={() => setAuth(false)} title="Выйти">
 						<SvgIcon name="logout" />
 					</Button>

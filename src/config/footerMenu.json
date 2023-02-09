@@ -13,5 +13,17 @@
 		"id": "footer-link-3",
 		"title": "Объявления",
 		"path": "/cars"
+	},
+	{
+		"id": "footer-link-4",
+		"title": "Личный кабинет",
+		"path": "/personal",
+		"auth": true
+	},
+	{
+		"id": "footer-link-5",
+		"title": "Мои объявления",
+		"path": "/personal/cars",
+		"auth": true
 	}
 ]

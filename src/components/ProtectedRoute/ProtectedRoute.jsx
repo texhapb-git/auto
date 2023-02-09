@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
+
+import { isAuthSelector } from '../../store/slices/authSlice';
 
 const ProtectedRoute = ({ children }) => {
 	const location = useLocation();
 
-	const loggedIn = false;
+	const isAuth = useSelector(isAuthSelector);
 
-	if (!loggedIn) {
+	if (!isAuth) {
 		return <Navigate to="/auth/login" state={{ referref: location }} />;
 	}
 

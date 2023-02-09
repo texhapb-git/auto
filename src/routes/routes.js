@@ -13,8 +13,8 @@ import { CarsListPage } from '../pages/CarsListPage';
 import { CarDetailPage } from '../pages/CarDetailPage';
 import { FavouritesPage } from '../pages/FavouritesPage';
 
-import { LoginPage } from '../pages/LoginPage';
-import { SignupPage } from '../pages/SignupPage';
+import { SignInPage } from '../pages/SignInPage';
+import { SignUpPage } from '../pages/SignUpPage';
 
 import { PersonalAccountPage } from '../pages/PersonalAccountPage';
 import { PersonalCarsPage } from '../pages/PersonalCarsPage';
@@ -72,19 +72,19 @@ const routes = [
 		children: [
 			{
 				index: true,
-				element: <Navigate to="/auth/login" />
+				element: <Navigate to="/auth/signin" />
 			},
 			{
-				path: 'login',
-				element: <LoginPage />
+				path: 'signin',
+				element: <SignInPage />
 			},
 			{
 				path: 'signup',
-				element: <SignupPage />
+				element: <SignUpPage />
 			},
 			{
 				path: '*',
-				element: <Navigate to="/auth/login" />
+				element: <Navigate to="/auth/signin" />
 			}
 		]
 	},

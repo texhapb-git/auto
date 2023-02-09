@@ -8,5 +8,11 @@
 		"id": "header-link-2",
 		"title": "Объявления",
 		"path": "/cars"
+	},
+	{
+		"id": "header-link-3",
+		"title": "Мои объявления",
+		"path": "/personal/cars",
+		"auth": true
 	}
 ]

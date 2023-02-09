@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
@@ -6,14 +6,16 @@ import { Button } from '../Button';
 import { SvgIcon } from '../SvgIcon';
 import { Avatar } from '../Avatar';
 
+import { isAuthSelector } from '../../store/slices/authSlice';
+
 import styles from './Profile.module.scss';
 
 const Profile = () => {
-	const [auth, setAuth] = useState(false);
+	const isAuth = useSelector(isAuthSelector);
 
 	return (
 		<div className={styles.profile}>
-			{auth ?
+			{isAuth ?
 				<>
 					<div className={styles.profileName}>
 						<Link to="/personal">Александр</Link>
@@ -23,11 +25,13 @@ const Profile = () => {
 							<Avatar src="" className={styles.profileAvatar} />
 						</Link>
 					</div>
-					<Button type="none" className={styles.profileLogout} onClick={() => setAuth(false)} title="Выйти">
+					<Button type="none" className={styles.profileLogout} title="Выйти">
 						<SvgIcon name="logout" />
 					</Button>
 				</>
-				: <Button styleType="secondary" onClick={() => setAuth(true)}>Войти</Button>
+				:
+				<Link to="/auth"><Button styleType="secondary">Войти</Button></Link>
+
 			}
 
 		</div>

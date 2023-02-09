@@ -3,6 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
 import { InnerLayout } from '../layouts/InnerLayout';
 import { AuthLayout } from '../layouts/AuthLayout';
+import { PersonalLayout } from '../layouts/PersonalLayout';
+
+import { ProtectedRoute } from '../components/ProtectedRoute';
 
 import { MainPage } from '../pages/MainPage';
 import { AboutPage } from '../pages/AboutPage';
@@ -12,6 +15,10 @@ import { FavouritesPage } from '../pages/FavouritesPage';
 
 import { LoginPage } from '../pages/LoginPage';
 import { SignupPage } from '../pages/SignupPage';
+
+import { PersonalAccountPage } from '../pages/PersonalAccountPage';
+import { PersonalCarsPage } from '../pages/PersonalCarsPage';
+
 
 
 const routes = [
@@ -79,6 +86,29 @@ const routes = [
 				path: '*',
 				element: <Navigate to="/auth/login" />
 			}
+		]
+	},
+	{
+		path: 'personal',
+		element: <ProtectedRoute><PersonalLayout /></ProtectedRoute>,
+		children: [
+			{
+				index: true,
+				element: <Navigate to="/personal/account" />
+			},
+			{
+				path: 'account',
+				element: <PersonalAccountPage />
+			},
+			{
+				path: 'cars',
+				element: <PersonalCarsPage />
+			},
+			{
+				path: '*',
+				element: <Navigate to="/personal/login" />
+			}
+
 		]
 	},
 	{

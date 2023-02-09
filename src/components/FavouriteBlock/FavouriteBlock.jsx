@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 import { SvgIcon } from '../SvgIcon';
 
-import { getFavouritesCount } from '../../store/slices/favouritesSlice';
+import { getFavouritesCountSelector } from '../../store/slices/favouritesSlice';
 
 import styles from './FavouriteBlock.module.scss';
 
 
 const FavouriteBlock = () => {
 
-	const count = useSelector(getFavouritesCount);
+	const count = useSelector(getFavouritesCountSelector);
 
 	return (
 		<div className={styles.fav}>

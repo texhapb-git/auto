@@ -2,13 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '../Button';
 
-import { getIsOpen, toggleOpen } from '../../store/slices/mobileMenuSlice';
+import { getIsOpenSelector, toggleOpen } from '../../store/slices/mobileMenuSlice';
 
 import styles from './Burger.module.scss';
 
 const Burger = () => {
 	const dispatch = useDispatch();
-	const isOpen = useSelector(getIsOpen);
+	const isOpen = useSelector(getIsOpenSelector);
 
 	return (
 		<Button type="none" className={styles.iconMenu} onClick={() => dispatch(toggleOpen())}>

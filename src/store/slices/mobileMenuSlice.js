@@ -14,7 +14,7 @@ const mobileMenuSlice = createSlice({
 	}
 });
 
-export const getIsOpen = (state) => state.mobileMenu.isOpen || false;
+export const getIsOpenSelector = (state) => state.mobileMenu.isOpen || false;
 
 export const { toggleOpen } = mobileMenuSlice.actions;
 

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { updateCarValues } from '../../utils/car';
 import { formatPrice, formatNumber } from '../../utils/numbers';
 
 import styles from './CarsListItem.module.scss';
@@ -36,6 +37,9 @@ const CarsListItem = ({ type, car }) => {
 	}
 
 	if (type === 'list') {
+
+		car = updateCarValues(car);
+
 		return (
 			<div className={styles.carItemListContainer}>
 				<div className={styles.carItemList}>
@@ -73,15 +77,15 @@ const CarsListItem = ({ type, car }) => {
 
 							<div className={styles.carItemListSummaryBlock}>
 
-								<div>{car.engineVolume.toFixed(1)} л&thinsp;/&thinsp;{car.enginePower} л.с&thinsp;/&thinsp;Бензин</div>
-								<div>Автомат</div>
-								<div>Седан</div>
+								<div>{car.engineVolume.toFixed(1)} л&thinsp;/&thinsp;{car.enginePower} л.с&thinsp;/&thinsp;{car?.engine?.title}</div>
+								<div>{car?.transmission?.title}</div>
+								<div>{car?.bodyType?.title}</div>
 
 							</div>
 
 							<div className={styles.carItemListSummaryBlock}>
-								<div>Передний</div>
-								<div>Синий</div>
+								<div>{car?.gearType?.title}</div>
+								<div>{car?.color?.title}</div>
 								<div className={styles.carItemListSummaryMileage}>{formatNumber(car.mileage)}&nbsp;км</div>
 							</div>
 

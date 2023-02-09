@@ -4,6 +4,7 @@ import ImageGallery from 'react-image-gallery';
 
 import { Button } from '../Button';
 
+import { updateCarValues } from '../../utils/car';
 import { formatPrice, formatNumber } from '../../utils/numbers';
 import { formatPhone } from '../../utils/phone';
 
@@ -14,6 +15,8 @@ import styles from './CarDetail.module.scss';
 
 const CarDetail = ({ car }) => {
 	const owner = car.userInfo;
+
+	car = updateCarValues(car);
 
 	const images = [
 		{
@@ -105,23 +108,23 @@ const CarDetail = ({ car }) => {
 						</li>
 						<li className={styles.carDetailParamsRow}>
 							<span className={styles.carDetailParamsCell}>Кузов</span>
-							<span className={styles.carDetailParamsCell}>Седан</span>
+							<span className={styles.carDetailParamsCell}>{car?.bodyType?.title}</span>
 						</li>
 						<li className={styles.carDetailParamsRow}>
 							<span className={styles.carDetailParamsCell}>Цвет</span>
-							<span className={styles.carDetailParamsCell}>Желтый</span>
+							<span className={styles.carDetailParamsCell}>{car?.color?.title}</span>
 						</li>
 						<li className={styles.carDetailParamsRow}>
 							<span className={styles.carDetailParamsCell}>Двигатель</span>
-							<span className={styles.carDetailParamsCell}>{car.engineVolume.toFixed(1)} л&thinsp;/&thinsp;{car.enginePower} л.с&thinsp;/&thinsp;Электрический</span>
+							<span className={styles.carDetailParamsCell}>{car.engineVolume.toFixed(1)} л&thinsp;/&thinsp;{car.enginePower} л.с&thinsp;/&thinsp;{car?.engine?.title}</span>
 						</li>
 						<li className={styles.carDetailParamsRow}>
 							<span className={styles.carDetailParamsCell}>Коробка</span>
-							<span className={styles.carDetailParamsCell}>Автомат</span>
+							<span className={styles.carDetailParamsCell}>{car?.transmission?.title}</span>
 						</li>
 						<li className={styles.carDetailParamsRow}>
 							<span className={styles.carDetailParamsCell}>Привод</span>
-							<span className={styles.carDetailParamsCell}>Передний</span>
+							<span className={styles.carDetailParamsCell}>{car?.gearType?.title}</span>
 						</li>
 					</ul>
 				</div>

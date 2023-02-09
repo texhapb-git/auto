@@ -5,14 +5,14 @@ import { toast } from 'react-toastify';
 import { CarsList } from '../components/CarsList';
 import { Spinner } from '../components/Spinner';
 
-import { fetchCarsList, getCarsList, getCarsListLoading, getCarsListError } from '../store/slices/carsListSlice';
+import { fetchCarsList, getCarsListSelector, getCarsListLoadingSelector, getCarsListErrorSelector } from '../store/slices/carsListSlice';
 
 const CarsListPage = () => {
 	const dispatch = useDispatch();
 
-	const loading = useSelector(getCarsListLoading);
-	const error = useSelector(getCarsListError);
-	const cars = useSelector(getCarsList);
+	const loading = useSelector(getCarsListLoadingSelector);
+	const error = useSelector(getCarsListErrorSelector);
+	const cars = useSelector(getCarsListSelector);
 
 	useEffect(() => {
 		const params = {

@@ -53,9 +53,9 @@ const lastCarsSlice = createSlice({
 	}
 });
 
-export const getLastCarsLoading = (state) => state.lastCars.loading;
-export const getLastCarsError = (state) => state.lastCars.error;
-export const getLastCars = (state) => state.lastCars.list;
+export const getLastCarsLoadingSelector = (state) => state.lastCars.loading;
+export const getLastCarsErrorSelector = (state) => state.lastCars.error;
+export const getLastCarsSelector = (state) => state.lastCars.list;
 
 // export const {  } = lastCarsSlice.actions;
 

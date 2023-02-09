@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { CarDetail } from '../components/CarDetail';
 import { Spinner } from '../components/Spinner';
 
-import { fetchCar, getCarDetail, getCarDetailLoading, getCarDetailError } from '../store/slices/carDetailSlice';
+import { fetchCar, getCarDetailSelector, getCarDetailLoadingSelector, getCarDetailErrorSelector } from '../store/slices/carDetailSlice';
 
 // import cars from '../db/cars.json';
 
@@ -15,9 +15,9 @@ const CarDetailPage = () => {
 
 	const { carId } = useParams();
 
-	const loading = useSelector(getCarDetailLoading);
-	const error = useSelector(getCarDetailError);
-	const car = useSelector(getCarDetail);
+	const loading = useSelector(getCarDetailLoadingSelector);
+	const error = useSelector(getCarDetailErrorSelector);
+	const car = useSelector(getCarDetailSelector);
 
 	useEffect(() => {
 		dispatch(fetchCar(carId));

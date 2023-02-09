@@ -47,9 +47,9 @@ const carsListSlice = createSlice({
 	}
 });
 
-export const getCarsListLoading = (state) => state.carsList.loading;
-export const getCarsListError = (state) => state.carsList.error;
-export const getCarsList = (state) => state.carsList.list;
+export const getCarsListLoadingSelector = (state) => state.carsList.loading;
+export const getCarsListErrorSelector = (state) => state.carsList.error;
+export const getCarsListSelector = (state) => state.carsList.list;
 
 // export const {  } = carsListSlice.actions;
 

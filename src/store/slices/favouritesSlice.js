@@ -15,7 +15,7 @@ const favouritesSlice = createSlice({
 	}
 });
 
-export const getFavouritesCount = (state) => state.favourites.favs.length || 0;
+export const getFavouritesCountSelector = (state) => state.favourites.favs.length || 0;
 
 export const { toggleFavourite } = favouritesSlice.actions;
 

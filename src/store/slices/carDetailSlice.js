@@ -60,9 +60,9 @@ const carsDetailSlice = createSlice({
 	}
 });
 
-export const getCarDetailLoading = (state) => state.carDetail.loading;
-export const getCarDetailError = (state) => state.carDetail.error;
-export const getCarDetail = (state) => state.carDetail.carInfo;
+export const getCarDetailLoadingSelector = (state) => state.carDetail.loading;
+export const getCarDetailErrorSelector = (state) => state.carDetail.error;
+export const getCarDetailSelector = (state) => state.carDetail.carInfo;
 
 // export const {  } = carsDetailSlicee.actions;
 

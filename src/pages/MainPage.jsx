@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { CarsList } from '../components/CarsList';
 import { Spinner } from '../components/Spinner';
-import { fetchLastCars, getLastCars, getLastCarsLoading, getLastCarsError } from '../store/slices/lastCarsSlice';
+import { fetchLastCars, getLastCarsSelector, getLastCarsLoadingSelector, getLastCarsErrorSelector } from '../store/slices/lastCarsSlice';
 
 
 const MainPage = () => {
 	const dispatch = useDispatch();
 
-	const loading = useSelector(getLastCarsLoading);
-	const error = useSelector(getLastCarsError);
-	const cars = useSelector(getLastCars);
+	const loading = useSelector(getLastCarsLoadingSelector);
+	const error = useSelector(getLastCarsErrorSelector);
+	const cars = useSelector(getLastCarsSelector);
 
 	useEffect(() => {
 		dispatch(fetchLastCars());

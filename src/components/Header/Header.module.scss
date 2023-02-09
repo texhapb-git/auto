@@ -19,6 +19,10 @@
 	justify-content: flex-start;
 	align-items: center;
 	margin-right: 50px;
+
+	@media(max-width: $md) {
+		margin-right: 30px;
+	}
 }
 
 .headerMenuBlock {

@@ -2,20 +2,20 @@ import { useSelector } from 'react-redux';
 
 import { Navigate } from 'react-router-dom';
 
-import { SignUpForm } from '../components/SignUpForm';
+import { SignInForm } from '../components/SignInForm';
 
 import { isAuthSelector } from '../store/slices/authSlice';
 
-const SignUpPage = () => {
+const SignInPage = () => {
 	const isAuth = useSelector(isAuthSelector);
 	return (
 		<>
 			{isAuth ?
 				<Navigate to="/personal" />
-				: <SignUpForm />
+				: <SignInForm />
 			}
 		</>
 	);
 };
 
-export { SignUpPage };
+export { SignInPage };

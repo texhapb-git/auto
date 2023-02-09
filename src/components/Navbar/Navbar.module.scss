@@ -20,6 +20,10 @@
 				line-height: 1;
 				transition: .3s all ease;
 
+				@media(max-width: $md) {
+					font-size: 0.9rem
+				}
+
 				&:hover {
 					color: $hoverMainColor;
 					text-decoration: underline;
@@ -43,7 +47,8 @@
 	ul {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: 1rem 2rem;
+		flex-wrap: wrap;
 
 		@media(max-width: $xs) {
 			flex-direction: column;

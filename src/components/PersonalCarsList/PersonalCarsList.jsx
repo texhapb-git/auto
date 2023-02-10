@@ -1,20 +1,29 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { PersonalCarsListItem } from '../PersonalCarsListItem';
+import { Button } from '../Button';
+
 import styles from './PersonalCarsList.module.scss';
 
 const PersonalCarsList = ({ cars }) => {
 	return (
-		<>
+		<div className={styles.carListContainer}>
 			<h1>Мои объявления</h1>
-			<div><Link to="/personal/car">добавить объявление</Link></div>
+			<div className={styles.carListButton}>
+				<Link to="/personal/car">
+					<Button>Добавить объявление</Button>
+				</Link>
+			</div>
 
 			{cars.length ?
-				<>Объявы</>
-				: <p>Нет объявлений</p>
+				<div className={styles.carList}>
+					{cars.map(car => <PersonalCarsListItem key={`car-${car.id}`} car={car} />)}
+				</div>
+				: <p>У Вас нет объявлений</p>
 			}
 
-		</>
+		</div>
 	);
 };
 

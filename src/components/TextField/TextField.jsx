@@ -1,29 +1,21 @@
 import { useCallback, useState } from 'react';
 
-import { SvgIcon } from '../SvgIcon';
 import { useToggle } from '../../hooks/useToggle';
 
+import { SvgIcon } from '../SvgIcon';
 import { Button } from '../Button';
 
 import styles from './TextField.module.scss';
 
 function TextField({ type = 'text', name, label, value, required, register, error, errorMessage }) {
-	const [showPassword, setShowPassword] = useToggle(false);
+	const [showPassword, toggleShowPassword] = useToggle(false);
 	const [isFocus, setIsFocus] = useState(!!value?.toString().length);
 
 	const inputRegister = register(name);
 	const fullLabel = label + (required ? '*' : '');
 
 	const getHiddenButtonClasses = () => {
-		if (!showPassword) {
-			return styles.textFieldHiddenButton;
-		} else {
-			return styles.textFieldHiddenButton_show;
-		}
-	};
-
-	const toggleShowPassword = () => {
-		setShowPassword((prevState) => !prevState);
+		return showPassword ? styles.textFieldHiddenButton_show : styles.textFieldHiddenButton;
 	};
 
 	const handleFocus = useCallback(() => {

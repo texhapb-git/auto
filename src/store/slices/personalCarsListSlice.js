@@ -21,6 +21,23 @@ export const fetchPersonalCarsList = createAsyncThunk(
 	}
 );
 
+export const deletePersonalCar = createAsyncThunk(
+	`${NAME_SPACE}/deletePersonalCar`,
+	async function (id, { rejectWithValue, dispatch }) {
+		try {
+			const response = await carsService.deleteCar(id);
+
+			if (!response.status === 200) {
+				throw new Error('Server error');
+			}
+
+			dispatch(removeCar({ id }));
+		} catch (error) {
+			return rejectWithValue(error.message);
+		}
+	}
+);
+
 const personalCarsListSlice = createSlice({
 	name: NAME_SPACE,
 	initialState: {
@@ -33,6 +50,9 @@ const personalCarsListSlice = createSlice({
 			state.list = [];
 			state.loading = true;
 			state.error = null;
+		},
+		removeCar(state, action) {
+			state.list = state.list.filter(car => car.id !== action.payload.id);
 		}
 	},
 	extraReducers: {
@@ -48,6 +68,12 @@ const personalCarsListSlice = createSlice({
 			state.loading = false;
 			state.error = action.payload;
 		},
+		[deletePersonalCar.pending]: (state) => {
+			state.error = null;
+		},
+		[deletePersonalCar.rejected]: (state, action) => {
+			state.error = action.payload;
+		},
 	}
 });
 
@@ -55,6 +81,6 @@ export const getPersonalCarsListLoadingSelector = (state) => state.personalCars.
 export const getPersonalCarsListErrorSelector = (state) => state.personalCars.error;
 export const getPersonalCarsListSelector = (state) => state.personalCars.list;
 
-export const { clearList } = personalCarsListSlice.actions;
+export const { clearList, removeCar } = personalCarsListSlice.actions;
 
 export default personalCarsListSlice.reducer;

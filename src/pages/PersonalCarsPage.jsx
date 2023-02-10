@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { toast } from 'react-toastify';
+
 import { Spinner } from '../components/Spinner';
 import { PersonalCarsList } from '../components/PersonalCarsList';
 
@@ -18,7 +20,6 @@ const PersonalCarsPage = () => {
 	const cars = useSelector(getPersonalCarsListSelector);
 
 	useEffect(() => {
-
 		if (isAuth && userId) {
 			const params = {
 				'userId': userId,
@@ -29,19 +30,17 @@ const PersonalCarsPage = () => {
 			dispatch(fetchPersonalCarsList(params));
 		}
 
-
 	}, [isAuth, userId, dispatch]);
+
+	if (error) {
+		toast(error, { type: 'error' });
+	}
 
 	return (
 		<>
-			{!error ?
-				<>
-					{loading ?
-						<Spinner />
-						: <PersonalCarsList cars={cars} />
-					}
-				</>
-				: null
+			{loading ?
+				<Spinner />
+				: <PersonalCarsList cars={cars} />
 			}
 		</>
 	);

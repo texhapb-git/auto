@@ -72,6 +72,7 @@ const SignUpForm = () => {
 					errorMessage={errors?.lastName?.message}
 				/>
 				<TextField
+					type="email"
 					label="Email"
 					value=""
 					name="email"

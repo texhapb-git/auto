@@ -54,6 +54,7 @@ const SignInForm = () => {
 			<form noValidate autoComplete="off" onSubmit={handleSubmit(onFormSubmit)}>
 
 				<TextField
+					type="email"
 					label="Email"
 					value=""
 					name="email"

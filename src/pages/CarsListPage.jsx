@@ -32,17 +32,10 @@ const CarsListPage = () => {
 		<>
 			<h1>Filter</h1>
 
-			{!error ?
-				<>
-					{loading ?
-						<Spinner />
-						: <CarsList type="list" cars={cars} />
-					}
-				</>
-				: null
+			{loading ?
+				<Spinner />
+				: <CarsList type="list" cars={cars} />
 			}
-
-
 		</>
 
 	);

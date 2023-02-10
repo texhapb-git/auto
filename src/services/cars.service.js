@@ -22,6 +22,10 @@ const carsService = {
 			payload
 		);
 		return response;
+	},
+	deleteCar: async (carId, payload) => {
+		const response = httpService.delete(carsEndPoint + carId);
+		return response;
 	}
 };
 

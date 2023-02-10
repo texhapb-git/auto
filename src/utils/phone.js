@@ -1,4 +1,4 @@
-export function formatPhone(phone, matrix = '+X (XXX) XXX-XX-XX') {
+export function formatPhone(phone, matrix = '+7 (XXX) XXX-XX-XX') {
 	let formattedPhone = '';
 
 	let i = 0;

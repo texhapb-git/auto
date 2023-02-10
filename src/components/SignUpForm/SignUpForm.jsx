@@ -4,18 +4,18 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import YupPassword from 'yup-password';
 
-import { toast } from 'react-toastify';
-
 import { Link } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TextField } from '../TextField';
 import { Button } from '../Button';
 
+import { signUpApp, registerErrorSelector } from '../../store/slices/authSlice';
+
 import styles from './SignUpForm.module.scss';
 
 YupPassword(yup);
-
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const schema = yup.object().shape({
 	firstName: yup.string().matches(/^([^0-9]*)$/, 'Имя может содержать только буквы').required('Поле обязательно для заполнения'),
@@ -27,6 +27,9 @@ const schema = yup.object().shape({
 });
 
 const SignUpForm = () => {
+	const dispatch = useDispatch();
+
+
 	const {
 		register,
 		handleSubmit,
@@ -36,10 +39,12 @@ const SignUpForm = () => {
 		resolver: yupResolver(schema)
 	});
 
+	const registerError = useSelector(registerErrorSelector);
+
 
 	const onFormSubmit = (formData) => {
+		dispatch(signUpApp(formData));
 
-		toast('Данные обновлены!');
 	};
 
 	return (
@@ -97,6 +102,7 @@ const SignUpForm = () => {
 					errorMessage={errors?.passwordConfirm?.message} />
 
 				<TextField
+					type="number"
 					label="Телефон"
 					value=""
 					name="phone"
@@ -106,9 +112,12 @@ const SignUpForm = () => {
 					errorMessage={errors?.phone?.message}
 				/>
 
-				<div className={styles.signUpFormErrors}>
-					Неправильный email или пароль
-				</div>
+				{registerError &&
+					<div className={styles.signUpFormErrors}>
+						{registerError}
+					</div>
+				}
+
 
 				<div className={styles.signUpFormButtons}>
 					<Button buttonType="submit">Создать аккаунт</Button>

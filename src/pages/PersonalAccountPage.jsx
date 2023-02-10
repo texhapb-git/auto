@@ -1,6 +1,8 @@
+import { PersonalProfile } from '../components/PersonalProfile';
+
 const PersonalAccountPage = () => {
 	return (
-		<>PersonalAccountPage</>
+		<PersonalProfile />
 	);
 };
 

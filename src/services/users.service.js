@@ -3,8 +3,10 @@ import httpService from './http.service';
 const usersEndPoint = 'users/';
 
 const usersService = {
-	fetchAll: async () => {
-		const response = await httpService.get(usersEndPoint);
+	fetch: async (params) => {
+		const response = await httpService.get(usersEndPoint, {
+			params: params
+		});
 		return response;
 	},
 	getUserById: async (userId) => {
@@ -13,9 +15,8 @@ const usersService = {
 		);
 		return response;
 	},
-	createUser: async (userId, payload) => {
-		const response = httpService.put(
-			usersEndPoint + userId,
+	createUser: async (payload) => {
+		const response = httpService.post(usersEndPoint,
 			payload
 		);
 		return response;

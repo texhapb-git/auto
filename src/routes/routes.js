@@ -18,6 +18,7 @@ import { SignUpPage } from '../pages/SignUpPage';
 
 import { PersonalAccountPage } from '../pages/PersonalAccountPage';
 import { PersonalCarsPage } from '../pages/PersonalCarsPage';
+import { PersonalCarEditPage } from '../pages/PersonalCarEditPage';
 
 
 
@@ -105,8 +106,12 @@ const routes = [
 				element: <PersonalCarsPage />
 			},
 			{
+				path: 'car/:carId?',
+				element: <PersonalCarEditPage />
+			},
+			{
 				path: '*',
-				element: <Navigate to="/personal/login" />
+				element: <Navigate to="/personal/account" />
 			}
 
 		]

@@ -8,6 +8,7 @@ import carsListReducer from './slices/carsListSlice';
 import carDetailReducer from './slices/carDetailSlice';
 import lastCarsReducer from './slices/lastCarsSlice';
 
+import personalCarsReducer from './slices/personalCarsListSlice';
 
 
 export default configureStore({
@@ -19,6 +20,8 @@ export default configureStore({
 
 		carsList: carsListReducer,
 		carDetail: carDetailReducer,
-		lastCars: lastCarsReducer
+		lastCars: lastCarsReducer,
+
+		personalCars: personalCarsReducer
 	}
 });

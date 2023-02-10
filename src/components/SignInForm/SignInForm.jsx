@@ -2,12 +2,15 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { toast } from 'react-toastify';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TextField } from '../TextField';
 import { Button } from '../Button';
+
+import { signInApp, authErrorSelector } from '../../store/slices/authSlice';
 
 import styles from './SignInForm.module.scss';
 
@@ -17,6 +20,10 @@ const schema = yup.object().shape({
 });
 
 const SignInForm = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const location = useLocation();
+
 	const {
 		register,
 		handleSubmit,
@@ -26,10 +33,17 @@ const SignInForm = () => {
 		resolver: yupResolver(schema)
 	});
 
+	const authError = useSelector(authErrorSelector);
+
 
 	const onFormSubmit = (formData) => {
-
-		toast('Данные обновлены!');
+		dispatch(signInApp(formData))
+			.unwrap()
+			.then(() => {
+				if (location.state?.referref?.pathname) {
+					navigate(location.state.referref.pathname, { replace: true });
+				}
+			});
 	};
 
 	return (
@@ -59,9 +73,11 @@ const SignInForm = () => {
 					error={!!errors?.password}
 					errorMessage={errors?.password?.message} />
 
-				<div className={styles.signInFormErrors}>
-					Неправильный email или пароль
-				</div>
+				{authError &&
+					<div className={styles.signInFormErrors}>
+						{authError}
+					</div>
+				}
 
 				<div className={styles.signInFormButtons}>
 					<Button buttonType="submit">Войти</Button>

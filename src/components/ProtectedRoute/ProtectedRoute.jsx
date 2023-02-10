@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
 	const isAuth = useSelector(isAuthSelector);
 
 	if (!isAuth) {
-		return <Navigate to="/auth/login" state={{ referref: location }} />;
+		return <Navigate to="/auth/signin" state={{ referref: location }} />;
 	}
 
 	return children;

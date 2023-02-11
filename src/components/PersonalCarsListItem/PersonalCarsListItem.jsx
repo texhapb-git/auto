@@ -43,7 +43,7 @@ const PersonalCarsListItem = ({ car }) => {
 				<div className={styles.carItemListThumb}>
 					<div className={styles.carItemListImg} >
 						<Link to={`/cars/${car.id}`}>
-							<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} title={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/assets/cars/car1.jpg'} />
+							<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} title={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
 						</Link>
 					</div>
 
@@ -90,7 +90,7 @@ const PersonalCarsListItem = ({ car }) => {
 
 				<div className={styles.carItemListButtons}>
 
-					<Link to={`/personal/car/${car.id}`}>
+					<Link to={`/personal/cars/edit/${car.id}`}>
 						<Button type="none" className={styles.carItemListEditButton}>
 							<SvgIcon name="pencil" />
 						</Button>

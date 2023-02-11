@@ -15,7 +15,7 @@ const MainPage = () => {
 
 	useEffect(() => {
 		dispatch(fetchLastCars());
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<>

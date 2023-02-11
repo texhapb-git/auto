@@ -22,7 +22,7 @@ const CarsListPage = () => {
 		};
 
 		dispatch(fetchCarsList(params));
-	}, [dispatch]);
+	}, []);
 
 	if (error) {
 		toast(error, { type: 'error' });

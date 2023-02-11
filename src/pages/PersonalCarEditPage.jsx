@@ -1,34 +1,61 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+
+import { EditForm } from '../components/EditFrom';
 
 import { Spinner } from '../components/Spinner';
 
-import { isAuthSelector, authUserIdSelector } from '../store/slices/authSlice';
+import { authUserIdSelector } from '../store/slices/authSlice';
+
+import carsService from '../services/cars.service';
 
 const PersonalCarEditPage = () => {
 	const { carId } = useParams();
 	const [loading, setLoading] = useState(true);
+	const [car, setCar] = useState({});
+	const navigate = useNavigate();
 
-	const isAuth = useSelector(isAuthSelector);
 	const userId = useSelector(authUserIdSelector);
 
 
-
-	console.log(carId);
-
-
 	useEffect(() => {
-		if (loading) {
+		setLoading(true);
 
-		}
-	}, [loading]);
+		(async function () {
+			try {
+
+				const response = await carsService.getCarById(carId);
+
+				if (response.status !== 200) {
+					throw new Error('Server failed');
+				}
+
+				const car = response.data;
+
+				if (String(car.userId) !== String(userId)) {
+					navigate('/personal/cars');
+				}
+
+				setCar(car);
+				setLoading(false);
+
+			} catch (e) {
+				toast(e.message, { type: 'error' });
+			}
+
+		})();
+
+	}, [carId, userId]);
 
 	if (loading) {
 		return <Spinner />;
 	}
+
 	return (
-		<>sdfdssd</>
+		<EditForm car={car} />
 	);
 };
 

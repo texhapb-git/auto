@@ -19,6 +19,7 @@ import { SignUpPage } from '../pages/SignUpPage';
 import { PersonalAccountPage } from '../pages/PersonalAccountPage';
 import { PersonalCarsPage } from '../pages/PersonalCarsPage';
 import { PersonalCarEditPage } from '../pages/PersonalCarEditPage';
+import { PersonalCarAddPage } from '../pages/PersonalCarAddPage';
 
 
 
@@ -103,10 +104,14 @@ const routes = [
 			},
 			{
 				path: 'cars',
-				element: <PersonalCarsPage />
+				element: <PersonalCarsPage />,
 			},
 			{
-				path: 'car/:carId?',
+				path: 'cars/add',
+				element: <PersonalCarAddPage />
+			},
+			{
+				path: 'cars/edit/:carId',
 				element: <PersonalCarEditPage />
 			},
 			{

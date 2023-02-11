@@ -16,8 +16,15 @@ const carsService = {
 		);
 		return response;
 	},
-	createCar: async (carId, payload) => {
-		const response = httpService.put(
+	createCar: async (payload) => {
+		const response = httpService.post(
+			carsEndPoint,
+			payload
+		);
+		return response;
+	},
+	updateCar: async (carId, payload) => {
+		const response = httpService.patch(
 			carsEndPoint + carId,
 			payload
 		);

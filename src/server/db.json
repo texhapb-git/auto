@@ -106,9 +106,10 @@
       "gearType": "GEAR_FRONT",
       "transmission": "TRANSMISSION_ROBOT",
       "color": "COLOR_YELLOW",
-      "mileage": 96420,
+      "mileage": 996420,
       "price": 2536000,
-      "city": "Санкт-Петербург"
+      "city": "Санкт-Петербург",
+      "comment": ""
     },
     {
       "_id": "2j255gvkjFoirejVtc",

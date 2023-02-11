@@ -20,7 +20,7 @@ const CarsListItem = ({ type, car }) => {
 				<Link to={`/cars/${car.id}`} className={styles.carItemFlatLink}>
 
 					<div className={styles.carItemFlatImg}>
-						<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/assets/cars/car1.jpg'} />
+						<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
 					</div>
 
 					<div className={styles.carItemFlatContent}>
@@ -58,7 +58,7 @@ const CarsListItem = ({ type, car }) => {
 					<div className={styles.carItemListThumb}>
 						<div className={styles.carItemListImg} >
 							<Link to={`/cars/${car.id}`}>
-								<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} title={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/assets/cars/car1.jpg'} />
+								<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} title={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
 							</Link>
 						</div>
 

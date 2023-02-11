@@ -114,8 +114,8 @@
 	}
 
 	.carItemListContent {
-		width: 300px;
-		flex: 0 0 300px;
+		width: 290px;
+		flex: 0 0 290px;
 
 		@media(max-width: $xs) {
 			width: 100%;
@@ -195,6 +195,7 @@
 		width: 130px;
 		flex: 0 0 130px;
 		padding-top: 5px;
+		white-space: nowrap;
 
 		@media(max-width: $xs) {
 			width: 100%;
@@ -238,6 +239,7 @@
 		position: relative;
 		display: flex;
 		gap: 10px;
+		margin-left: auto;
 
 		@media(max-width: $md) {
 			left: -160px;

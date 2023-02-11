@@ -20,65 +20,50 @@ const CarDetail = ({ car }) => {
 
 	const images = [
 		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
+			original: process.env.PUBLIC_URL + '/upload/cars/1.jpeg',
+			thumbnail: process.env.PUBLIC_URL + '/upload/cars/1.jpeg',
 			loading: 'lazy'
 		},
 		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car2.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car2.jpg',
+			original: process.env.PUBLIC_URL + '/upload/cars/2.webp',
+			thumbnail: process.env.PUBLIC_URL + '/upload/cars/2.webp',
 			loading: 'lazy'
 		},
 		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
+			original: process.env.PUBLIC_URL + '/upload/cars/3.jpg',
+			thumbnail: process.env.PUBLIC_URL + '/upload/cars/3.jpg',
 			loading: 'lazy'
 		},
 		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car2.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car2.jpg',
+			original: process.env.PUBLIC_URL + '/upload/cars/4.jpg',
+			thumbnail: process.env.PUBLIC_URL + '/upload/cars/4.jpg',
 			loading: 'lazy'
 		},
 		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
+			original: process.env.PUBLIC_URL + '/upload/cars/5.jpg',
+			thumbnail: process.env.PUBLIC_URL + '/upload/cars/5.jpg',
 			loading: 'lazy'
 		},
 		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
+			original: process.env.PUBLIC_URL + '/upload/cars/6.jpg',
+			thumbnail: process.env.PUBLIC_URL + '/upload/cars/6.jpg',
 			loading: 'lazy'
 		},
 		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
+			original: process.env.PUBLIC_URL + '/upload/cars/7.jpg',
+			thumbnail: process.env.PUBLIC_URL + '/upload/cars/7.jpg',
 			loading: 'lazy'
 		},
 		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
+			original: process.env.PUBLIC_URL + '/upload/cars/8.jpg',
+			thumbnail: process.env.PUBLIC_URL + '/upload/cars/8.jpg',
 			loading: 'lazy'
-		},
-		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			loading: 'lazy'
-		},
-		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			loading: 'lazy'
-		},
-		{
-			original: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			thumbnail: process.env.PUBLIC_URL + '/assets/cars/car1.jpg',
-			loading: 'lazy'
-		},
+		}
+
 	];
 
 	return (
 		<div className={styles.carDetail}>
-
 			<div className={styles.carDetailBack}>
 				<Link to="/cars">
 					<Button type="default" styleType="secondary">&#8678;&nbsp;<span>Список объявлений</span></Button>

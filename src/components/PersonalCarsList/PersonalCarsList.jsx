@@ -11,7 +11,7 @@ const PersonalCarsList = ({ cars }) => {
 		<div className={styles.carListContainer}>
 			<h1>Мои объявления</h1>
 			<div className={styles.carListButton}>
-				<Link to="/personal/car">
+				<Link to="/personal/cars/add">
 					<Button>Добавить объявление</Button>
 				</Link>
 			</div>

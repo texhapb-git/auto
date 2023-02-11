@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import carsService from '../../services/cars.service';
+import { prepareForDB } from '../../utils/car';
 
 const NAME_SPACE = 'personalCars';
 
@@ -38,6 +39,48 @@ export const deletePersonalCar = createAsyncThunk(
 	}
 );
 
+export const createPersonalCar = createAsyncThunk(
+	`${NAME_SPACE}/createPersonalCar`,
+	async function (data, { rejectWithValue, dispatch }) {
+		try {
+			const response = await carsService.createCar(prepareForDB(data));
+
+			if (!response.status === 200) {
+				throw new Error('Server error');
+			}
+
+			const car = response.data;
+
+			dispatch(createCar(car));
+
+			return car;
+		} catch (error) {
+			return rejectWithValue(error.message);
+		}
+	}
+);
+
+export const updatePersonalCar = createAsyncThunk(
+	`${NAME_SPACE}/updatePersonalCar`,
+	async function ({ id, data }, { rejectWithValue, dispatch }) {
+		try {
+			const response = await carsService.updateCar(id, prepareForDB(data));
+
+			if (!response.status === 200) {
+				throw new Error('Server error');
+			}
+
+			const car = response.data;
+
+			dispatch(updateCar(car));
+
+			return car;
+		} catch (error) {
+			return rejectWithValue(error.message);
+		}
+	}
+);
+
 const personalCarsListSlice = createSlice({
 	name: NAME_SPACE,
 	initialState: {
@@ -51,9 +94,22 @@ const personalCarsListSlice = createSlice({
 			state.loading = true;
 			state.error = null;
 		},
+		createCar(state, action) {
+			state.list.unshift(action.payload);
+		},
+		updateCar(state, action) {
+			state.list = state.list.map(car => {
+				if (car.id === action.payload.id) {
+					return { ...car, ...action.payload };
+				}
+
+				return car;
+			});
+
+		},
 		removeCar(state, action) {
 			state.list = state.list.filter(car => car.id !== action.payload.id);
-		}
+		},
 	},
 	extraReducers: {
 		[fetchPersonalCarsList.pending]: (state) => {
@@ -81,6 +137,6 @@ export const getPersonalCarsListLoadingSelector = (state) => state.personalCars.
 export const getPersonalCarsListErrorSelector = (state) => state.personalCars.error;
 export const getPersonalCarsListSelector = (state) => state.personalCars.list;
 
-export const { clearList, removeCar } = personalCarsListSlice.actions;
+export const { clearList, removeCar, createCar, updateCar } = personalCarsListSlice.actions;
 
 export default personalCarsListSlice.reducer;

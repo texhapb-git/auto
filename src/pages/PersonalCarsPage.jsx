@@ -30,7 +30,7 @@ const PersonalCarsPage = () => {
 			dispatch(fetchPersonalCarsList(params));
 		}
 
-	}, [isAuth, userId, dispatch]);
+	}, [isAuth, userId]);
 
 	if (error) {
 		toast(error, { type: 'error' });

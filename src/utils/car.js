@@ -5,7 +5,6 @@ import transmissions from '../carsData/transmissions.json';
 import gearTypes from '../carsData/gearTypes.json';
 
 export function updateCarValues(car) {
-
 	const updateObj = {};
 
 	if (car?.bodyType) {
@@ -26,6 +25,40 @@ export function updateCarValues(car) {
 
 	if (car?.gearType) {
 		updateObj.gearType = gearTypes.find(gearType => gearType.id === car.gearType);
+	}
+
+	return { ...car, ...updateObj };
+}
+
+export function prepareForDB(car) {
+	const updateObj = {};
+
+	if (car?.userId) {
+		updateObj.userId = Number(car.userId);
+	}
+
+	if (car?.dateCreated) {
+		updateObj.dateCreated = Number(car.dateCreated);
+	}
+
+	if (car?.year) {
+		updateObj.year = Number(car.year);
+	}
+
+	if (car?.engineVolume) {
+		updateObj.engineVolume = Number(car.engineVolume);
+	}
+
+	if (car?.enginePower) {
+		updateObj.enginePower = Number(car.enginePower);
+	}
+
+	if (car?.mileage) {
+		updateObj.mileage = Number(car.mileage);
+	}
+
+	if (car?.price) {
+		updateObj.price = Number(car.price);
 	}
 
 	return { ...car, ...updateObj };

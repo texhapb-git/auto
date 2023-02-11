@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useCallback, useState } from 'react';
 
 import { useToggle } from '../../hooks/useToggle';
@@ -7,7 +9,7 @@ import { Button } from '../Button';
 
 import styles from './TextField.module.scss';
 
-function TextField({ type = 'text', name, label, value, required, register, error, errorMessage }) {
+function TextField({ type, name, label, value, required, register, error, errorMessage }) {
 	const [showPassword, toggleShowPassword] = useToggle(false);
 	const [isFocus, setIsFocus] = useState(!!value?.toString().length);
 
@@ -30,18 +32,37 @@ function TextField({ type = 'text', name, label, value, required, register, erro
 
 	}, [inputRegister]);
 
+	const numberInputOnWheelPreventChange = (e) => {
+		e.target.blur();
+		e.stopPropagation();
+		setTimeout(() => {
+			e.target.focus();
+		}, 0);
+	};
+
 	return (
 		<div className={`${styles.inputField} ${isFocus ? styles.focused : ''} ${error ? styles.error : ''}`}>
 			<div className={styles.inputFieldContainer}>
 				<label>
 					<span>{fullLabel}</span>
-					<input
-						type={showPassword ? 'text' : type}
-						defaultValue={value}
-						{...inputRegister}
-						onFocus={handleFocus}
-						onBlur={handleBlur}
-					/>
+
+					{type === 'textarea' ?
+						<textarea
+							defaultValue={value}
+							{...inputRegister}
+							onFocus={handleFocus}
+							onBlur={handleBlur}></textarea>
+						:
+						<input
+							type={showPassword ? 'text' : type}
+							defaultValue={value}
+							{...inputRegister}
+							onFocus={handleFocus}
+							onBlur={handleBlur}
+							onWheel={numberInputOnWheelPreventChange}
+						/>
+					}
+
 
 					{type === 'password' && (
 						<Button
@@ -63,10 +84,26 @@ function TextField({ type = 'text', name, label, value, required, register, erro
 					<legend><span>{fullLabel}</span></legend>
 				</fieldset>
 			</div>
-			<div className={styles.inputFieldError}>{errorMessage}</div>
+
+			{error && <div className={styles.inputFieldError}>{errorMessage}</div>}
 		</div>
 	);
 
 }
+
+TextField.defaultProps = {
+	type: 'text',
+};
+
+TextField.propTypes = {
+	type: PropTypes.string,
+	name: PropTypes.string.isRequired,
+	label: PropTypes.string,
+	value: PropTypes.any,
+	required: PropTypes.bool,
+	register: PropTypes.func,
+	error: PropTypes.bool,
+	errorMessage: PropTypes.string
+};
 
 export { TextField };

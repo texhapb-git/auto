@@ -26,7 +26,6 @@
 		position: absolute;
 		font-size: 1rem;
 		line-height: 1;
-		top: 50%;
 		left: 0;
 		right: auto;
 		background-color: transparent;
@@ -37,14 +36,14 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		padding: 2px 35px 2px 11px;
-		transform: translateY(-50%);
+		transform: translateY(17px);
 		transition: transform .2s ease-in-out, font-size .2s ease-in-out;
 	}
 
 	&.focused label span {
 		font-size: 0.75rem;
 		line-height: 1;
-		transform: translate(3px, -34px);
+		transform: translate(3px, -8px);
 	}
 
 	&.error label span {
@@ -69,6 +68,20 @@
 			-webkit-appearance: none;
 			-moz-appearance: textfield;
 		}
+	}
+
+	textarea {
+		display: block;
+		width: 100%;
+		height: 100px;
+		border-radius: 4px;
+		box-sizing: border-box;
+		padding: 12px 12px;
+		outline: none;
+		font-weight: normal;
+		font-size: 1rem;
+		color: #2B2D33;
+		resize: none;
 	}
 
 	.textFieldHiddenButton {

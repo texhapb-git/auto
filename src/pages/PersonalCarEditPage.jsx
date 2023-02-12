@@ -48,7 +48,7 @@ const PersonalCarEditPage = () => {
 
 		})();
 
-	}, [carId, userId]);
+	}, [carId, userId, navigate]);
 
 	if (loading) {
 		return <Spinner />;

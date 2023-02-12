@@ -4,10 +4,14 @@ import { CarsListItem } from '../CarsListItem';
 
 import styles from './CarsList.module.scss';
 
-const CarsList = ({ type, title, cars }) => {
+const CarsList = ({ type, title, cars, hideEmpty }) => {
+
+
+	if (hideEmpty && !cars.length) {
+		return null;
+	}
 
 	return (
-
 		<div className={styles.carListContainer}>
 
 			{title.length ?
@@ -25,7 +29,7 @@ const CarsList = ({ type, title, cars }) => {
 						return <CarsListItem key={`car-${car.id}`} type={type} car={car} />;
 					})}
 				</div>
-				: null
+				: <p>Объявлений пока нет.</p>
 			}
 
 		</div>
@@ -41,7 +45,8 @@ CarsList.defaultProps = {
 CarsList.propTypes = {
 	type: PropTypes.oneOf(['list', 'flat']),
 	title: PropTypes.string,
-	cars: PropTypes.arrayOf(PropTypes.object)
+	cars: PropTypes.arrayOf(PropTypes.object),
+	hideEmpty: PropTypes.bool
 };
 
 export { CarsList };

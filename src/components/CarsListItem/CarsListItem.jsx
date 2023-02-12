@@ -20,13 +20,13 @@ const CarsListItem = ({ type, car }) => {
 				<Link to={`/cars/${car.id}`} className={styles.carItemFlatLink}>
 
 					<div className={styles.carItemFlatImg}>
-						<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
+						<img loading="lazy" alt={`${car.title}, ${car.year}&nbsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
 					</div>
 
 					<div className={styles.carItemFlatContent}>
 						<div className={styles.carItemFlatCity}>{car.city}</div>
 
-						<div className={styles.carItemFlatTitle}>{car.title}, {car.year}&bsp;г.</div>
+						<div className={styles.carItemFlatTitle}>{car.title}, {car.year}&nbsp;г.</div>
 
 						<div className={styles.carItemFlatPrice}>{formatPrice(car.price)}</div>
 
@@ -46,7 +46,7 @@ const CarsListItem = ({ type, car }) => {
 
 					<div className={styles.carItemListMobileInfo}>
 						<div className={styles.carItemListMobileLink}>
-							<Link to={`/cars/${car.id}`}>{car.title}, {car.year}&bsp;г.</Link>
+							<Link to={`/cars/${car.id}`}>{car.title}, {car.year}&nbsp;г.</Link>
 						</div>
 
 						<div className={styles.carItemListPrice}>
@@ -58,7 +58,7 @@ const CarsListItem = ({ type, car }) => {
 					<div className={styles.carItemListThumb}>
 						<div className={styles.carItemListImg} >
 							<Link to={`/cars/${car.id}`}>
-								<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} title={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
+								<img loading="lazy" alt={`${car.title}, ${car.year}&nbsp;г.`} title={`${car.title}, ${car.year}&nbsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
 							</Link>
 						</div>
 

@@ -21,7 +21,7 @@ const CarDetailPage = () => {
 
 	useEffect(() => {
 		dispatch(fetchCar(carId));
-	}, [carId]);
+	}, [carId, dispatch]);
 
 	if (error) {
 		toast(error, { type: 'error' });

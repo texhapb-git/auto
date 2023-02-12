@@ -33,7 +33,7 @@ export const removeUserData = () => {
 	localStorage.removeItem(JWT_REFRESH_KEY);
 };
 
-export default {
+const localStorageService = {
 	setTokens,
 	getAccessToken,
 	getLocalId,
@@ -41,3 +41,5 @@ export default {
 	removeUserData,
 	getRefreshToken
 };
+
+export default localStorageService;

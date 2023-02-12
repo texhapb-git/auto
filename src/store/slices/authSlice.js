@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import usersService from '../../services/users.service';
 import localStorageService from '../../services/localStorage.service';
+import { prepareForDB } from '../../utils/user';
 
 const NAME_SPACE = 'auth';
 
@@ -78,7 +79,7 @@ export const signUpApp = createAsyncThunk(
 				return rejectWithValue('Пользователь с таким email уже существует');
 			}
 
-			const userResponse = await usersService.createUser(userInfo);
+			const userResponse = await usersService.createUser(prepareForDB(userInfo));
 
 			if (!userResponse.status === 200) {
 				throw new Error('Server error');

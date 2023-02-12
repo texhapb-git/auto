@@ -269,11 +269,11 @@ const EditForm = ({ car }) => {
 						<TextField
 							type="textarea"
 							label="Комментарий"
-							value={car?.comment}
-							name="comment"
+							value={car?.ownerDescription}
+							name="ownerDescription"
 							register={register}
-							error={!!errors?.comment}
-							errorMessage={errors?.comment?.message}
+							error={!!errors?.ownerDescription}
+							errorMessage={errors?.ownerDescription?.message}
 						/>
 					</div>
 				</div>

@@ -31,7 +31,7 @@ const PersonalCarsListItem = ({ car }) => {
 
 				<div className={styles.carItemListMobileInfo}>
 					<div className={styles.carItemListMobileLink}>
-						<Link to={`/cars/${car.id}`}>{car.title}, {car.year}&bsp;г.</Link>
+						<Link to={`/cars/${car.id}`}>{car.title}, {car.year}&nbsp;г.</Link>
 					</div>
 
 					<div className={styles.carItemListPrice}>
@@ -43,7 +43,7 @@ const PersonalCarsListItem = ({ car }) => {
 				<div className={styles.carItemListThumb}>
 					<div className={styles.carItemListImg} >
 						<Link to={`/cars/${car.id}`}>
-							<img loading="lazy" alt={`${car.title}, ${car.year}&bsp;г.`} title={`${car.title}, ${car.year}&bsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
+							<img loading="lazy" alt={`${car.title}, ${car.year}&nbsp;г.`} title={`${car.title}, ${car.year}&nbsp;г.`} src={process.env.PUBLIC_URL + '/upload/cars/1.jpeg'} />
 						</Link>
 					</div>
 

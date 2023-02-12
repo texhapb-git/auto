@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import carsService from '../../services/cars.service';
+import sorting from '../../config/sorting.json';
 
 const NAME_SPACE = 'carsList';
 
@@ -25,11 +26,14 @@ const carsListSlice = createSlice({
 	name: NAME_SPACE,
 	initialState: {
 		list: [],
+		sort: sorting[0].id,
 		loading: true,
 		error: null
 	},
 	reducers: {
-
+		setSort(state, action) {
+			state.sort = action.payload.sort;
+		}
 	},
 	extraReducers: {
 		[fetchCarsList.pending]: (state) => {
@@ -50,7 +54,8 @@ const carsListSlice = createSlice({
 export const getCarsListLoadingSelector = (state) => state.carsList.loading;
 export const getCarsListErrorSelector = (state) => state.carsList.error;
 export const getCarsListSelector = (state) => state.carsList.list;
+export const getCarsListSortSelector = (state) => state.carsList.sort;
 
-// export const {  } = carsListSlice.actions;
+export const { setSort } = carsListSlice.actions;
 
 export default carsListSlice.reducer;

@@ -31,6 +31,13 @@ export function updateCarValues(car) {
 }
 
 export function prepareForDB(car) {
+
+	for (var key in car) {
+		if (car.hasOwnProperty(key)) {
+			car[key] = car[key].trim();
+		}
+	}
+
 	const updateObj = {};
 
 	if (car?.userId) {

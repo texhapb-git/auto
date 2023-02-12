@@ -23,7 +23,7 @@ const schema = yup.object().shape({
 	email: yup.string().email('Введите корректный email').required('Поле обязательно для заполнения'),
 	password: yup.string().required('Поле обязательно для заполнения'),
 	passwordConfirm: yup.string().required('Поле обязательно для заполнения').oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
-	phone: yup.string().matches(/^([0-9]*)$/, 'Телефон может содержать только цифры').length(10, 'Телефон должен содержать 10 цифр').required('Поле обязательно для заполнения'),
+	phone: yup.string().required('Поле обязательно для заполнения').matches(/^([0-9]*)$/, 'Телефон может содержать только цифры').length(10, 'Телефон должен содержать 10 цифр'),
 });
 
 const SignUpForm = () => {

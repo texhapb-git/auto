@@ -6,6 +6,31 @@ import { prepareForDB } from '../../utils/user';
 
 const NAME_SPACE = 'auth';
 
+export const checkAuthUser = createAsyncThunk(
+	`${NAME_SPACE}/checkAuthUser`,
+	async function (_, { rejectWithValue, dispatch }) {
+		const userId = localStorageService.getLocalId();
+
+		try {
+			if (!userId) {
+				return;
+			}
+
+			const userResponse = await usersService.getUserById(userId);
+
+			if (!userResponse.status === 200) {
+				throw new Error('Server error');
+			}
+
+			const user = userResponse.data;
+			return user;
+
+		} catch (error) {
+			return rejectWithValue(error.message);
+		}
+	}
+);
+
 export const getAuthUserInfo = createAsyncThunk(
 	`${NAME_SPACE}/getAuthUserInfo`,
 	async function (_, { rejectWithValue, dispatch, getState }) {
@@ -107,8 +132,8 @@ export const signUpApp = createAsyncThunk(
 const authSlice = createSlice({
 	name: NAME_SPACE,
 	initialState: {
-		isAuth: localStorageService.getLocalId() ? true : false,
-		authUserId: localStorageService.getLocalId() || null,
+		isAuth: false,
+		authUserId: null,
 		authUserInfo: null,
 		authError: null,
 		registerError: null
@@ -128,6 +153,17 @@ const authSlice = createSlice({
 		}
 	},
 	extraReducers: {
+		[checkAuthUser.pending]: (state, action) => {
+			state.authError = null;
+		},
+		[checkAuthUser.fulfilled]: (state, action) => {
+			state.isAuth = true;
+			state.authUserId = action.payload.id;
+			state.authUserInfo = action.payload;
+		},
+		[checkAuthUser.rejected]: (state, action) => {
+			state.authError = action.payload;
+		},
 		[signInApp.pending]: (state, action) => {
 			state.authError = null;
 		},

@@ -1,23 +1,15 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { getAuthUserInfo, isAuthSelector, authUserInfoSelector } from '../../store/slices/authSlice';
+import { isAuthSelector, authUserInfoSelector } from '../../store/slices/authSlice';
 import { formatPhone } from '../../utils/phone';
 
 import styles from './PersonalProfile.module.scss';
 
 const PersonalProfile = () => {
-	const dispatch = useDispatch();
 	const isAuth = useSelector(isAuthSelector);
 	const userInfo = useSelector(authUserInfoSelector);
 
-	useEffect(() => {
-		if (isAuth && !userInfo) {
-			dispatch(getAuthUserInfo());
-		}
-	}, [isAuth, userInfo, dispatch]);
-
-	if (!userInfo) {
+	if (!(isAuth && userInfo)) {
 		return null;
 	}
 

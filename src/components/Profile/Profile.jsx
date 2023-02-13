@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +6,7 @@ import { SvgIcon } from '../SvgIcon';
 import { Avatar } from '../Avatar';
 
 import { clearList } from '../../store/slices/personalCarsListSlice';
-import { signOut, getAuthUserInfo, isAuthSelector, authUserInfoSelector } from '../../store/slices/authSlice';
+import { signOut, isAuthSelector, authUserInfoSelector } from '../../store/slices/authSlice';
 
 import styles from './Profile.module.scss';
 
@@ -20,12 +19,6 @@ const Profile = () => {
 		dispatch(signOut());
 		dispatch(clearList());
 	};
-
-	useEffect(() => {
-		if (isAuth && !userInfo) {
-			dispatch(getAuthUserInfo());
-		}
-	}, [isAuth, userInfo, dispatch]);
 
 	return (
 		<div className={styles.profile}>
@@ -46,7 +39,6 @@ const Profile = () => {
 				</>
 				:
 				<Link to="/auth"><Button styleType="secondary">Войти</Button></Link>
-
 			}
 
 		</div>

@@ -6,6 +6,7 @@ import routes from '../../routes/routes';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/main.scss';
+import { AppLoader } from '../../hoc/AppLoader';
 
 
 const App = () => {
@@ -14,7 +15,9 @@ const App = () => {
 
 	return (
 		<>
-			{appRoutes}
+			<AppLoader>
+				{appRoutes}
+			</AppLoader>
 
 			<ToastContainer />
 		</>

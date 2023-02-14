@@ -38,7 +38,7 @@ const EditForm = ({ car }) => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm({
-		mode: 'onBlur',
+		mode: 'onChange',
 		resolver: yupResolver(schema)
 	});
 

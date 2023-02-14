@@ -1,8 +1,7 @@
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import YupPassword from 'yup-password';
+
 
 import { Link } from 'react-router-dom';
 
@@ -13,18 +12,10 @@ import { Button } from '../Button';
 
 import { signUpApp, registerErrorSelector } from '../../store/slices/authSlice';
 
+import { schema } from '../../validations/signUpFormValidation';
+
 import styles from './SignUpForm.module.scss';
 
-YupPassword(yup);
-
-const schema = yup.object().shape({
-	firstName: yup.string().matches(/^([^0-9]*)$/, 'Имя может содержать только буквы').required('Поле обязательно для заполнения'),
-	lastName: yup.string().matches(/^([^0-9]*)$/, 'Фамилия может содержать только буквы'),
-	email: yup.string().email('Введите корректный email').required('Поле обязательно для заполнения'),
-	password: yup.string().required('Поле обязательно для заполнения'),
-	passwordConfirm: yup.string().required('Поле обязательно для заполнения').oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
-	phone: yup.string().required('Поле обязательно для заполнения').matches(/^([0-9]*)$/, 'Телефон может содержать только цифры').length(10, 'Телефон должен содержать 10 цифр'),
-});
 
 const SignUpForm = () => {
 	const dispatch = useDispatch();
@@ -35,7 +26,7 @@ const SignUpForm = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm({
-		mode: 'onBlur',
+		mode: 'onChange',
 		resolver: yupResolver(schema)
 	});
 
@@ -88,6 +79,7 @@ const SignUpForm = () => {
 					value=""
 					name="password"
 					required
+					comment="Пароль должен быть на латинице, не менее 6 символов, содержать цифры, большие и маленькие буквы"
 					register={register}
 					error={!!errors?.password}
 					errorMessage={errors?.password?.message} />

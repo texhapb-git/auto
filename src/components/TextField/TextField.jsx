@@ -9,7 +9,7 @@ import { Button } from '../Button';
 
 import styles from './TextField.module.scss';
 
-function TextField({ type, name, label, value, required, register, error, errorMessage }) {
+function TextField({ type, name, label, value, required, comment, register, error, errorMessage }) {
 	const [showPassword, toggleShowPassword] = useToggle(false);
 	const [isFocus, setIsFocus] = useState(!!value?.toString().length);
 
@@ -86,6 +86,8 @@ function TextField({ type, name, label, value, required, register, error, errorM
 			</div>
 
 			{error && <div className={styles.inputFieldError}>{errorMessage}</div>}
+
+			{comment?.length && <div className={styles.inputFieldComment}>{comment}</div>}
 		</div>
 	);
 
@@ -101,6 +103,7 @@ TextField.propTypes = {
 	label: PropTypes.string,
 	value: PropTypes.any,
 	required: PropTypes.bool,
+	comment: PropTypes.string,
 	register: PropTypes.func,
 	error: PropTypes.bool,
 	errorMessage: PropTypes.string

@@ -176,4 +176,12 @@
 		font-size: 0.75rem;
 		line-height: 1;
 	}
+
+	.inputFieldComment {
+		color: $textColorLight;
+		padding: 5px 0 0 11px;
+		font-size: 0.75rem;
+		line-height: 1;
+		font-style: italic;
+	}
 }

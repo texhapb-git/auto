@@ -82,10 +82,11 @@
       "enginePower": 160,
       "gearType": "GEAR_FRONT",
       "transmission": "TRANSMISSION_ROBOT",
-      "color": "COLOR_YELLOW",
+      "color": "COLOR_BEIGE",
       "mileage": 96420,
       "price": 2536000,
-      "city": "Санкт-Петербург"
+      "city": "Санкт-Петербург",
+      "ownerDescription": ""
     },
     {
       "_id": "1j255gvkjFoirejVtc",

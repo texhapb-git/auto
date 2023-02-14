@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+
 import { toast } from 'react-toastify';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -21,28 +21,10 @@ import colors from '../../carsData/colors.json';
 import { authUserIdSelector } from '../../store/slices/authSlice';
 import { createPersonalCar, updatePersonalCar } from '../../store/slices/personalCarsListSlice.js';
 
+import { schema } from '../../validations/editFormValidation';
+
 import styles from './EditForm.module.scss';
 
-
-
-const schema = yup.object().shape({
-	title: yup.string().required('Поле обязательно для заполнения'),
-	year: yup.string().required('Поле обязательно для заполнения').test('val', 'Укажите правильный год', (val) => {
-		val = parseInt(val) || 0;
-		const dateNow = new Date();
-		return val >= 1900 && val <= parseInt(dateNow.getFullYear());
-	}),
-	bodyType: yup.string().required('Поле обязательно для заполнения'),
-	engine: yup.string().required('Поле обязательно для заполнения'),
-	engineVolume: yup.string().required('Поле обязательно для заполнения').matches(/^(?<=^| )\d+(\.\d+)?(?=$| )$/, 'Поле может содержать только цифры'),
-	enginePower: yup.string().required('Поле обязательно для заполнения').matches(/^([0-9]*)$/, 'Поле может содержать только цифры'),
-	gearType: yup.string().required('Поле обязательно для заполнения'),
-	transmission: yup.string().required('Поле обязательно для заполнения'),
-	color: yup.string().required('Поле обязательно для заполнения'),
-	mileage: yup.string().required('Поле обязательно для заполнения').matches(/^([0-9]*)$/, 'Поле может содержать только цифры'),
-	price: yup.string().required('Поле обязательно для заполнения').matches(/^([0-9]*)$/, 'Поле может содержать только цифры'),
-	city: yup.string().required('Поле обязательно для заполнения'),
-});
 
 const EditForm = ({ car }) => {
 	const dispatch = useDispatch();
@@ -59,10 +41,6 @@ const EditForm = ({ car }) => {
 		mode: 'onBlur',
 		resolver: yupResolver(schema)
 	});
-
-	// const registerError = useSelector(registerErrorSelector);
-	const registerError = null;
-
 
 	const onFormSubmit = (formData) => {
 
@@ -277,13 +255,6 @@ const EditForm = ({ car }) => {
 						/>
 					</div>
 				</div>
-
-				{registerError &&
-					<div className={styles.signUpFormErrors}>
-						{registerError}
-					</div>
-				}
-
 
 				<div className={styles.signUpFormButtons}>
 					<Button buttonType="submit">Сохранить объявление</Button>

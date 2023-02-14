@@ -1,7 +1,7 @@
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+
 
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -12,12 +12,10 @@ import { Button } from '../Button';
 
 import { signInApp, authErrorSelector } from '../../store/slices/authSlice';
 
+import { schema } from '../../validations/signInFormValidation';
+
 import styles from './SignInForm.module.scss';
 
-const schema = yup.object().shape({
-	email: yup.string().email('Введите корректный email').required('Поле обязательно для заполнения'),
-	password: yup.string().required('Поле обязательно для заполнения')
-});
 
 const SignInForm = () => {
 	const dispatch = useDispatch();
@@ -29,7 +27,7 @@ const SignInForm = () => {
 		handleSubmit,
 		formState: { errors }
 	} = useForm({
-		mode: 'onBlur',
+		mode: 'onChange',
 		resolver: yupResolver(schema)
 	});
 
